@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
-import QuantityControl from "./QuantityControl"; // QuantityControl 컴포넌트를 import
+import styled from 'styled-components';
+import QuantityControl from "./QuantityControl"; 
 
 const MenuItem = ({ name, price, quantity, onAddToCart }) => {
   // 수량 상태와 이를 업데이트하는 함수
@@ -22,12 +23,13 @@ const MenuItem = ({ name, price, quantity, onAddToCart }) => {
   );
 
   return (
-    <div className="menu-item">
+    <StyledMenuItem className="menu-item">
+      <TextElement>
       <h3>{name}</h3>
       <p>{price}원</p>
-      <div className="quantity-control">
-        <QuantityControl value={itemQuantity} onUpdate={handleQuantityChange} /> {/* QuantityControl 컴포넌트를 렌더링 */}
-      </div>
+      </TextElement>
+      <ButtonWrapper className="quantity-control">
+      <QuantityControl value={itemQuantity} onUpdate={handleQuantityChange} />
       <button
         className="add-to-cart-button"
         onClick={() => {
@@ -37,8 +39,44 @@ const MenuItem = ({ name, price, quantity, onAddToCart }) => {
       >
         추가하기
       </button>
-    </div>
+      </ButtonWrapper>
+    </StyledMenuItem>
   );
 };
+
+const StyledMenuItem = styled.div`
+display: flex;
+flex-direction: center;
+align-items: center;
+justify-content: space-between;
+border: 1px solid #D8BFD8;
+margin: 2% 20%;
+padding: 1rem 2rem;
+`;
+
+const TextElement = styled.div`
+display: flex;
+flex-direction: column;
+`;
+
+const ButtonWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+
+button {
+  background-color: #4B0082;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 10px;
+
+  &:hover {
+    background-color: #27005D;
+  }
+}
+`;
 
 export default MenuItem;

@@ -1,5 +1,7 @@
 import React from 'react';
 import MenuItem from './MenuItem'; 
+import styled from 'styled-components';
+
 
 const MenuList = ({ menuData, onAddToCart }) => {
   // slice, map 메소드 사용, MenuItem 컴포넌트로 변환
@@ -14,10 +16,14 @@ const MenuList = ({ menuData, onAddToCart }) => {
   ));
 
   return (
-    <div className="menu-list">
+    <StyledListItem className="menu-list">
       {menuItems}
-    </div>
+    </StyledListItem>
   );
 };
+
+const StyledListItem = styled.div`
+display: center;
+`;
 
 export default MenuList;
