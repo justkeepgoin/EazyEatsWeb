@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import QuantityControl from "./QuantityControl"; // QuantityControl 컴포넌트를 import
 
 const MenuItem = ({ name, price, quantity, onAddToCart }) => {
   // 수량 상태와 이를 업데이트하는 함수
@@ -25,19 +26,7 @@ const MenuItem = ({ name, price, quantity, onAddToCart }) => {
       <h3>{name}</h3>
       <p>{price}원</p>
       <div className="quantity-control">
-        <button
-          className="decrement-button"
-          onClick={() => handleQuantityChange(itemQuantity - 1)}
-        >
-          -
-        </button>
-        <span className="quantity">{itemQuantity}</span>
-        <button
-          className="increment-button"
-          onClick={() => handleQuantityChange(itemQuantity + 1)}
-        >
-          +
-        </button>
+        <QuantityControl value={itemQuantity} onUpdate={handleQuantityChange} /> {/* QuantityControl 컴포넌트를 렌더링 */}
       </div>
       <button
         className="add-to-cart-button"

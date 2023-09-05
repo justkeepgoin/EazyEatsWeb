@@ -8,12 +8,17 @@ const CartModal = ({ cartItems, onUpdateCartItemQuantity, onClose, onPay }) => {
 
   // 모달 내에서 장바구니 아이템 수량 업데이트
   const updateQuantity = (itemId, newQuantity) => {
-    const updatedCartItems = modalCartItems.map((item) =>
+    if (newQuantity < 1) {
+      newQuantity = 1; // 양수값으로 출력되도록 설정
+    }
+
+  const updatedCartItems = modalCartItems.map((item) =>
       item.id === itemId ? { ...item, quantity: newQuantity } : item
     );
     setModalCartItems(updatedCartItems);
     onUpdateCartItemQuantity(itemId, newQuantity);
-  };
+};
+
 
   // 총 금액 계산
   const totalAmount = modalCartItems.reduce((total, item) => total + item.price * item.quantity, 0);
