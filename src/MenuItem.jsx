@@ -50,8 +50,8 @@ flex-direction: center;
 align-items: center;
 justify-content: space-between;
 border: 1px solid #D8BFD8;
-margin: 2% 20%;
-padding: 1rem 2rem;
+margin: 1rem 25rem;
+padding: 0.2rem 2rem;
 `;
 
 const TextElement = styled.div`

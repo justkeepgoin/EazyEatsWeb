@@ -155,7 +155,7 @@ padding: 1rem;
   background-color: #4B0082;
   color: #fff;
   padding: 10px 30px;
-  margin: 10px;
+  margin: 5px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
