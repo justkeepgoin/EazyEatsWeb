@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-const CartModal = ({ cartItems, onUpdateCartItemQuantity, onClose }) => {
+const CartModal = ({ cartItems, onUpdateCartItemQuantity, onClose, onPay }) => {
   // 모달 내에서 장바구니 아이템, 금액 상태를 관리
   const [modalCartItems, setModalCartItems] = useState(cartItems);
 
@@ -22,9 +22,6 @@ const CartModal = ({ cartItems, onUpdateCartItemQuantity, onClose }) => {
   return ReactDOM.createPortal(
     <div className="cart-modal">
       <div className="cart-content">
-        <button className="close-button" onClick={onClose}>
-          닫기
-        </button>
         <h2>장바구니</h2>
         {modalCartItems.map((item) => (
           <div key={item.id} className="cart-item">
@@ -51,6 +48,12 @@ const CartModal = ({ cartItems, onUpdateCartItemQuantity, onClose }) => {
           총 금액: {totalAmount}원
         </div>
       </div>
+      <button className="close-button" onClick={onClose}>
+          취소
+        </button>
+        <button className="pay-button" onClick={onPay}>
+          결제
+        </button>
     </div>,
     document.getElementById('cart-modal-root')
   );
