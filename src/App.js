@@ -1,22 +1,22 @@
-import "./App.css";
-import MenuItem from "./MenuItem";
+// App.jsx
+import React from 'react';
+import MenuList from './MenuList';
 
-function App() {
+const App = () => {
+  // 음식 메뉴 데이터
+  const menuData = [
+    { id: 1, name: '음식1', price: 6500, quantity: 0 },
+    { id: 2, name: '음식2', price: 3000, quantity: 0 },
+    { id: 3, name: '음식3', price: 15000, quantity: 0 },
+    { id: 4, name: '음식4', price: 21000, quantity: 0 },
+    { id: 5, name: '음식5', price: 7000, quantity: 0 },
+  ];
+
   return (
     <div className="App">
-      <MenuItem
-        name="햄버거"
-        price={6500}
-        quantity={1}
-        onAddToCart={(name, price, quantity) => {
-          // 추가하기 버튼 클릭 핸들러 로직 구현
-          console.log(
-            `${quantity}개의 ${name}이(가) ${price}원으로 장바구니에 추가되었습니다.`
-          );
-        }}
-      />
+      <MenuList menuData={menuData} />
     </div>
   );
-}
+};
 
 export default App;
