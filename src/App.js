@@ -25,7 +25,19 @@ const App = () => {
     setCartItems(updatedCartItems);
   };
 
-  // 장바구니 모달 열기/닫기 상태 관련 함수
+  // 메뉴를 장바구니에 추가하는 함수
+  const addToCart = (name, price, quantity) => {
+    // 새로운 메뉴 아이템 생성
+    const newItem = {
+      id: cartItems.length + 1, // 임의의 ID 생성
+      name,
+      price,
+      quantity,
+    };
+    setCartItems([...cartItems, newItem]);
+  };
+
+  // 장바구니 모달 열기, 닫기 상태 관련 함수
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
 
   // 장바구니 모달 열기 함수
@@ -41,7 +53,7 @@ const App = () => {
     <div className="App">
       <h1>Market jeongly</h1>
       <CartButton openCartModal={openCartModal} />
-      <MenuList menuData={menuData} />
+      <MenuList menuData={menuData} onAddToCart={addToCart} />
       {isCartModalOpen && ( // 모달 열기 상태일 때만 모달을 렌더링
         <CartModal
           cartItems={cartItems}
